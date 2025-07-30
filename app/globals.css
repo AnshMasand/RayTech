@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dynamic theme variables - updated by ThemeContext */
+    --theme-dark: #1a2625;      /* Much darker default */
+    --theme-neutral: #8a9491;   /* Muted accent */
+    --theme-light: #f8f9f8;     /* Clean light */
+    
+    /* Legacy variables for compatibility */
+    --background: 26 38 37;     /* #1a2625 - Much darker */
+    --foreground: 248 249 248;  /* #f8f9f8 - Clean white */
+    --card: 26 38 37;
+    --card-foreground: 248 249 248;
+    --primary: 138 148 145;     /* #8a9491 - Muted teal-gray */
+    --primary-foreground: 26 38 37;
+    --secondary: 138 148 145;
+    --secondary-foreground: 26 38 37;
+    --muted: 138 148 145;
+    --muted-foreground: 248 249 248;
+    --accent: 138 148 145;
+    --accent-foreground: 26 38 37;
+    --border: 138 148 145;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-raytech-dark text-raytech-light;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .glow-text {
+    text-shadow: 0 0 20px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.5);
+  }
+  
+  .led-glow {
+    box-shadow: 0 0 30px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.3), 
+                0 0 60px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.2),
+                inset 0 0 20px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.1);
+  }
+  
+  .subtle-grid {
+    background-image: 
+      linear-gradient(rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-raytech-neutral to-raytech-light bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
+  }
+  
+  /* Theme-aware utilities */
+  .theme-bg-dark {
+    background-color: var(--theme-dark);
+  }
+  
+  .theme-bg-neutral {
+    background-color: var(--theme-neutral);
+  }
+  
+  .theme-bg-light {
+    background-color: var(--theme-light);
+  }
+  
+  .theme-text-dark {
+    color: var(--theme-dark);
+  }
+  
+  .theme-text-neutral {
+    color: var(--theme-neutral);
+  }
+  
+  .theme-text-light {
+    color: var(--theme-light);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-raytech-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-raytech-neutral rounded-full;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-raytech-light;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles */
+*:focus {
+  outline: 2px solid #AEB4B2;
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: rgba(174, 180, 178, 0.3);
+  color: #F4F4F2;
+} 
