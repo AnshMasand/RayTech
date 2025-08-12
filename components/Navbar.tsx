@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -40,92 +41,102 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? 'backdrop-blur-md shadow-xl' : 'backdrop-blur-sm'
+      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+        isScrolled ? 'backdrop-blur-xl shadow-executive' : 'backdrop-blur-lg'
       }`}
       style={{
         backgroundColor: isScrolled 
-          ? `var(--theme-dark)F2` // 95% opacity 
-          : `var(--theme-dark)E6`, // 90% opacity
-        borderBottom: isScrolled ? '1px solid #333333' : '1px solid transparent'
+          ? `rgba(255, 255, 255, 0.98)` 
+          : `rgba(26, 54, 93, 0.95)`,
+        borderBottom: isScrolled ? '1px solid var(--theme-border)' : '1px solid rgba(255, 255, 255, 0.15)'
       }}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-full flex items-center justify-center led-glow bg-theme-neutral">
-              <span className="font-bold text-xl text-theme-dark">R</span>
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between h-24">
+          {/* Premium Logo */}
+          <Link href="/" className="flex items-center space-x-4 group">
+            <div className="relative">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center shadow-theme-lg group-hover:shadow-theme-glow transition-all duration-300 overflow-hidden">
+                <Image 
+                  src="/raytech-logo.png" 
+                  alt="RayTech Logo" 
+                  width={40} 
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-secondary rounded-full border-2 border-white"></div>
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-bold text-theme-light">Raytech</span>
-              <span className="text-sm -mt-1 text-theme-muted">LED Solutions</span>
+              <span className={`text-xl sm:text-2xl font-bold transition-colors duration-300 ${
+                isScrolled ? 'text-theme-primary' : 'text-white'
+              }`}>RayTech</span>
+              <span className={`text-[10px] sm:text-xs font-medium tracking-wider uppercase transition-colors duration-300 ${
+                isScrolled ? 'text-theme-text-secondary' : 'text-white/80'
+              }`}>Global Pvt. Ltd.</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          {/* Premium Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-1">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
                 <Link
                   href={item.href}
-                  className="flex items-center space-x-1 transition-colors duration-200 font-medium text-theme-light"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = 'var(--theme-neutral)'
-                    item.dropdown && setOpenDropdown(item.name)
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'var(--theme-light)'
-                    setOpenDropdown(null)
-                  }}
+                  className={`flex items-center space-x-1 px-4 py-3 rounded-xl transition-all duration-300 font-medium ${
+                    isScrolled 
+                      ? 'text-theme-text-primary hover:text-theme-primary hover:bg-theme-accent/10' 
+                      : 'text-white/90 hover:text-white hover:bg-white/15'
+                  }`}
+                  onMouseEnter={() => item.dropdown && setOpenDropdown(item.name)}
+                  onMouseLeave={() => setOpenDropdown(null)}
                 >
-                  <span>{item.name}</span>
-                  {item.dropdown && <ChevronDown className="w-4 h-4" />}
+                  <span className="text-sm font-semibold tracking-wide">{item.name}</span>
+                  {item.dropdown && <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180 duration-300" />}
                 </Link>
                 
-                {/* Dropdown Menu */}
+                {/* Premium Dropdown Menu */}
                 {item.dropdown && openDropdown === item.name && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="absolute top-full left-0 mt-2 w-56 backdrop-blur-md rounded-lg shadow-xl border overflow-hidden"
-                    style={{ backgroundColor: 'var(--theme-card)', borderColor: 'var(--theme-border)' }}
+                    initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-64 bg-theme-surface backdrop-blur-xl rounded-2xl shadow-executive border border-theme-border overflow-hidden"
                     onMouseEnter={() => setOpenDropdown(item.name)}
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
-                    {item.dropdown.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-4 py-3 transition-colors duration-200 text-sm text-theme-light"
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = `var(--theme-neutral)1A`
-                          e.currentTarget.style.color = 'var(--theme-neutral)'
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent'
-                          e.currentTarget.style.color = 'var(--theme-light)'
-                        }}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
+                    <div className="p-2">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="flex items-center px-4 py-3 rounded-xl transition-all duration-200 text-theme-text-secondary hover:text-theme-primary hover:bg-theme-accent/5 group"
+                        >
+                          <span className="text-sm font-medium">{subItem.name}</span>
+                          <ArrowRight className="w-3 h-3 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+                      ))}
+                    </div>
                   </motion.div>
                 )}
               </div>
             ))}
             
-            {/* Get Quote Button */}
-            <div className="flex items-center space-x-4">
-              <button className="theme-button-primary px-6 py-2.5 text-sm font-semibold">
+            {/* Premium CTA Button */}
+            <div className="flex items-center ml-6 pl-6 border-l border-theme-border/30">
+              <button className="theme-button-primary px-8 py-3 text-sm font-semibold tracking-wide">
                 Get Quote
               </button>
             </div>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Premium Mobile Menu Toggle */}
           <button
-            className="lg:hidden text-theme-light"
+            className={`lg:hidden p-2 rounded-xl transition-all duration-300 ${
+              isScrolled 
+                ? 'text-theme-primary hover:bg-theme-accent/10' 
+                : 'text-white hover:bg-white/20'
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -133,52 +144,54 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Premium Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
           initial={{ opacity: 0, x: '100%' }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: '100%' }}
-          className="fixed inset-0 top-20 backdrop-blur-md lg:hidden"
-          style={{ backgroundColor: `var(--theme-dark)F2` }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 top-20 sm:top-24 backdrop-blur-xl lg:hidden bg-white/98 border-t border-theme-border shadow-xl"
         >
-          <div className="flex flex-col p-6 space-y-6">
-            {navItems.map((item) => (
-              <div key={item.name}>
-                <Link
-                  href={item.href}
-                  className="block py-3 text-lg font-medium text-theme-light transition-colors duration-200"
-                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--theme-neutral)'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--theme-light)'}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-                {item.dropdown && (
-                  <div className="ml-4 mt-2 space-y-2">
-                    {item.dropdown.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block py-2 text-sm transition-colors duration-200"
-                        style={{ color: 'var(--theme-muted)' }}
-                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--theme-neutral)'}
-                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--theme-muted)'}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <button 
-              className="theme-button-primary w-full px-6 py-3 text-lg font-semibold mt-6"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Get Quote
-            </button>
+          <div className="flex flex-col h-full">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-2">
+              {navItems.map((item) => (
+                <div key={item.name} className="space-y-2">
+                  <Link
+                    href={item.href}
+                    className="flex items-center justify-between p-3 sm:p-4 rounded-2xl text-theme-text-primary hover:bg-theme-accent/8 active:bg-theme-accent/12 transition-colors duration-200 font-semibold"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <span>{item.name}</span>
+                    <ArrowRight className="w-4 h-4 opacity-50" />
+                  </Link>
+                  {item.dropdown && (
+                    <div className="ml-6 space-y-1">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block p-2.5 sm:p-3 rounded-xl text-theme-text-secondary hover:text-theme-primary hover:bg-theme-accent/5 active:bg-theme-accent/8 transition-colors duration-200 text-sm sm:text-base"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            
+            {/* Mobile CTA */}
+            <div className="p-4 sm:p-6 border-t border-theme-border bg-gradient-to-b from-white to-theme-background/50">
+              <button 
+                className="theme-button-primary w-full px-6 py-3.5 sm:py-4 text-base sm:text-lg font-semibold"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Get Quote
+              </button>
+            </div>
           </div>
         </motion.div>
       )}

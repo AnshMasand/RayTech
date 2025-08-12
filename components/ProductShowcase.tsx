@@ -8,74 +8,74 @@ import { Sun, Lightbulb, Factory, ArrowRight } from 'lucide-react'
 
 const productCategories = [
   {
-    category: 'Indoor',
-    icon: Sun,
-    iconColor: 'bg-gradient-orange-yellow',
-    description: 'Comprehensive LED solutions for every lighting need',
-    products: [
-      {
-        name: 'Panel Lights',
-        wattage: '18W-48W',
-        lumens: '2000-5000lm',
-        badge: 'Syska Co-built'
-      },
-      {
-        name: 'Downlights', 
-        wattage: '5W-24W',
-        lumens: '500-2400lm',
-        badge: 'Syska Co-built'
-      },
-      {
-        name: 'Track Lights',
-        wattage: '10W-30W', 
-        lumens: '1000-3000lm',
-        badge: 'Syska Co-built'
-      }
-    ]
-  },
-  {
-    category: 'Outdoor',
+    category: 'LED Bulbs',
     icon: Lightbulb,
-    iconColor: 'bg-gradient-teal-blue',
-    description: 'Comprehensive LED solutions for every lighting need',
+    iconColor: 'bg-gradient-orange-yellow',
+    description: 'Professional LED bulb manufacturing with RDL assembly',
     products: [
       {
-        name: 'Street Lights',
-        wattage: '30W-150W',
-        lumens: '3000-18000lm'
+        name: 'Standard Bulbs',
+        wattage: '3W-15W',
+        lumens: '300-1500lm',
+        badge: 'SMT + Assembly'
       },
       {
-        name: 'Flood Lights',
-        wattage: '20W-200W',
-        lumens: '2000-24000lm'
+        name: 'RDL Bulbs', 
+        wattage: '5W-20W',
+        lumens: '500-2000lm',
+        badge: 'Advanced Testing'
       },
       {
-        name: 'Solar LED',
-        wattage: '15W-60W',
-        lumens: '1500-7000lm'
+        name: 'High Wattage',
+        wattage: '18W-50W', 
+        lumens: '1800-5000lm',
+        badge: 'Industrial Grade'
       }
     ]
   },
   {
-    category: 'Industrial',
+    category: 'LED Battens',
+    icon: Sun,
+    iconColor: 'bg-gradient-teal-blue',
+    description: 'Automated batten production with aging conveyors',
+    products: [
+      {
+        name: 'Standard Battens',
+        wattage: '18W-36W',
+        lumens: '1800-3600lm'
+      },
+      {
+        name: 'Emergency Battens',
+        wattage: '20W-40W',
+        lumens: '2000-4000lm'
+      },
+      {
+        name: 'Weatherproof',
+        wattage: '24W-48W',
+        lumens: '2400-4800lm'
+      }
+    ]
+  },
+  {
+    category: 'TVP Tubes',
     icon: Factory,
     iconColor: 'bg-gradient-to-br from-purple-500 to-pink-500',
-    description: 'Comprehensive LED solutions for every lighting need',
+    description: 'Complete TVP tube manufacturing with frame machines',
     products: [
       {
-        name: 'High-Bay Lights',
-        wattage: '50W-300W',
-        lumens: '6000-36000lm'
+        name: 'T8 LED Tubes',
+        wattage: '9W-22W',
+        lumens: '900-2200lm'
       },
       {
-        name: 'Linear Lights',
-        wattage: '20W-80W',
-        lumens: '2400-9600lm'
+        name: 'T5 LED Tubes',
+        wattage: '8W-18W',
+        lumens: '800-1800lm'
       },
       {
-        name: 'Explosion Proof',
-        wattage: '40W-120W',
-        lumens: '4800-14400lm'
+        name: 'Industrial Tubes',
+        wattage: '20W-40W',
+        lumens: '2000-4000lm'
       }
     ]
   }
@@ -86,104 +86,161 @@ export default function ProductShowcase() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   return (
-    <section ref={ref} className="py-12 bg-theme-dark">
-      <div className="container mx-auto px-4">
+    <section ref={ref} className="py-16 sm:py-20 lg:py-32 bg-gradient-to-b from-theme-background to-white relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 premium-pattern opacity-30"></div>
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-accent/5 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-20"
         >
-          <h2 className="text-5xl lg:text-7xl font-bold mb-6">
-            <span className="text-theme-neutral">Our </span>
-            <span className="text-theme-light">Product </span>
-            <span className="gradient-text">Range</span>
-          </h2>
-          <p className="text-xl text-theme-muted max-w-3xl mx-auto">
-            Comprehensive LED solutions for every lighting need
-          </p>
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-theme-accent/10 text-theme-accent font-semibold text-sm tracking-wide">
+              <div className="w-2 h-2 bg-theme-accent rounded-full animate-pulse"></div>
+              PRODUCT PORTFOLIO
+            </div>
+            
+            <h2 className="text-5xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight">
+              <span className="text-theme-text-primary">Exceptional </span>
+              <span className="gradient-text">Lighting</span>
+            </h2>
+            
+            <div className="h-1 w-32 bg-gradient-accent mx-auto rounded-full"></div>
+            
+            <p className="text-xl lg:text-2xl text-theme-text-secondary max-w-4xl mx-auto leading-relaxed font-light">
+              Meticulously crafted illumination solutions. <span className="font-semibold text-theme-text-primary">Engineered for perfection.</span>
+            </p>
+          </div>
         </motion.div>
 
-        {/* Product Categories Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        {/* Premium Product Categories Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10 mb-16 lg:mb-24">
           {productCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
-              className="bg-theme-card p-8 group hover:scale-105 transition-transform duration-300 rounded-2xl border"
-              style={{ borderColor: 'var(--theme-border)' }}
+              transition={{ duration: 0.8, delay: categoryIndex * 0.15 }}
+              className="group"
             >
-              {/* Category Header */}
-              <div className="text-center mb-8">
-                <div className={`w-16 h-16 rounded-2xl ${category.iconColor} flex items-center justify-center mx-auto mb-4 shadow-lg`}>
-                  <category.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-theme-light mb-2">{category.category}</h3>
-              </div>
-
-              {/* Products List */}
-              <div className="space-y-6">
-                {category.products.map((product, productIndex) => (
-                  <div key={product.name} className="border-b border-theme-border last:border-0 pb-4 last:pb-0">
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="text-lg font-semibold text-theme-light">{product.name}</h4>
-                      {(product as any).badge && (
-                        <span className="px-2 py-1 text-xs font-medium rounded-full" style={{ backgroundColor: 'var(--theme-neutral)', color: 'var(--theme-dark)' }}>
-                          {(product as any).badge}
-                        </span>
-                      )}
+              <div className="executive-card bg-gradient-to-b from-white to-theme-background/30 p-6 lg:p-8 xl:p-10 h-full hover:shadow-executive transition-all duration-500 hover:-translate-y-2">
+                {/* Category Header */}
+                <div className="text-center mb-10">
+                  <div className="relative mb-6">
+                    <div className={`w-20 h-20 rounded-3xl ${category.iconColor} flex items-center justify-center mx-auto shadow-theme-lg group-hover:shadow-theme-glow transition-all duration-300`}>
+                      <category.icon className="w-10 h-10 text-white" />
                     </div>
-                    <div className="flex justify-between text-sm text-theme-muted">
-                      <span>⚡ {product.wattage}</span>
-                      <span>💡 {product.lumens}</span>
-                    </div>
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-accent rounded-full border-2 border-white shadow-theme-sm"></div>
                   </div>
-                ))}
+                  <h3 className="text-3xl font-bold text-theme-text-primary mb-3 tracking-tight">{category.category}</h3>
+                  <p className="text-theme-text-secondary font-medium">Precision Engineered</p>
+                </div>
+
+                {/* Products List */}
+                <div className="space-y-5">
+                  {category.products.map((product, productIndex) => (
+                    <div key={product.name} className="bg-gradient-to-br from-theme-background to-theme-accent/[0.02] p-5 rounded-2xl border border-theme-border last:mb-0 hover:bg-theme-accent/[0.08] hover:border-theme-accent/20 transition-all duration-300 shadow-sm">
+                      <div className="flex justify-between items-start mb-3">
+                        <h4 className="text-lg font-bold text-theme-text-primary">{product.name}</h4>
+                        {(product as any).badge && (
+                          <span className="px-3 py-1 text-xs font-bold rounded-full bg-gradient-primary text-white shadow-theme-sm">
+                            {(product as any).badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <div className="flex items-center gap-1.5 text-theme-text-secondary font-medium">
+                          <div className="w-2 h-2 bg-theme-accent rounded-full ring-2 ring-theme-accent/20"></div>
+                          <span className="text-sm">{product.wattage}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-theme-text-secondary font-medium">
+                          <div className="w-2 h-2 bg-theme-primary rounded-full ring-2 ring-theme-primary/20"></div>
+                          <span className="text-sm">{product.lumens}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Category CTA */}
+                <div className="mt-8 pt-6 border-t border-theme-border-subtle">
+                  <button className="w-full theme-button-secondary py-3 text-sm font-semibold">
+                    View {category.category} Range
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* 3D Configurator Section */}
+        {/* Premium 3D Configurator Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mb-16"
+          className="text-center"
         >
-          <div className="bg-theme-card p-12 max-w-4xl mx-auto rounded-2xl border" style={{ borderColor: 'var(--theme-border)' }}>
-            {/* 3D Icon */}
-            <div className="w-24 h-24 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-8 shadow-xl">
-              <span className="text-3xl font-bold text-theme-dark">3D</span>
+          <div className="executive-card p-16 max-w-5xl mx-auto relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-accent/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-secondary/5 rounded-full blur-2xl"></div>
+            
+            <div className="relative z-10 space-y-12">
+              {/* 3D Icon */}
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="w-32 h-32 rounded-4xl bg-gradient-primary flex items-center justify-center shadow-executive group-hover:shadow-theme-glow transition-all duration-300">
+                    <span className="text-5xl font-black text-white tracking-tight">3D</span>
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-accent rounded-full border-3 border-white shadow-theme-md animate-pulse"></div>
+                </div>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-theme-accent/10 text-theme-accent font-semibold text-sm tracking-wide">
+                  <div className="w-2 h-2 bg-theme-accent rounded-full animate-pulse"></div>
+                  DESIGN STUDIO
+                </div>
+                
+                <h3 className="text-4xl lg:text-5xl font-bold text-theme-text-primary leading-tight">
+                  Tailored Lighting
+                  <span className="gradient-text block">Solutions</span>
+                </h3>
+                
+                <div className="h-1 w-24 bg-gradient-accent mx-auto rounded-full"></div>
+                
+                <p className="text-xl lg:text-2xl text-theme-text-secondary max-w-3xl mx-auto leading-relaxed font-light">
+                  Collaborate with our team to create lighting that perfectly complements
+                  <span className="font-semibold text-theme-text-primary"> your vision and space</span>
+                </p>
+              </div>
+              
+              {/* Action Buttons */}
+              <div className="flex flex-wrap justify-center gap-4">
+                <button className="theme-button-secondary px-8 py-4 text-sm font-semibold">
+                  Indoor Lighting
+                </button>
+                <button className="theme-button-secondary px-8 py-4 text-sm font-semibold">
+                  Outdoor Systems
+                </button>
+                <button className="theme-button-secondary px-8 py-4 text-sm font-semibold">
+                  Industrial Solutions
+                </button>
+              </div>
+              
+              <div className="pt-6">
+                <button className="theme-button-primary px-12 py-5 text-xl font-bold group relative overflow-hidden">
+                  <span className="relative z-10">Start Your Project</span>
+                  <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform relative z-10" />
+                </button>
+              </div>
             </div>
-            
-            <h3 className="text-3xl font-bold text-theme-light mb-4">
-              Build Your Custom Fixture
-            </h3>
-            <p className="text-xl text-theme-muted mb-8 max-w-2xl mx-auto">
-              Use our 3D configurator to design and visualize your
-              <br />
-              perfect lighting solution
-            </p>
-            
-            {/* Action Buttons */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <button className="theme-button-secondary px-6 py-3">
-                Explore Indoor
-              </button>
-              <button className="theme-button-secondary px-6 py-3">
-                Explore Outdoor  
-              </button>
-              <button className="theme-button-secondary px-6 py-3">
-                Explore Industrial
-              </button>
-            </div>
-            
-            <button className="theme-button-primary px-8 py-4 text-lg font-semibold">
-              Launch Configurator
-            </button>
           </div>
         </motion.div>
       </div>
