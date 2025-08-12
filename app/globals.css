@@ -4,63 +4,107 @@
 
 @layer base {
   :root {
-    /* Dynamic theme variables - updated by ThemeContext */
-    --theme-dark: #1a2625;      /* Much darker default */
-    --theme-neutral: #8a9491;   /* Muted accent */
-    --theme-light: #f8f9f8;     /* Clean light */
+    --theme-dark: #506e9a;
+    --theme-neutral: #ffffff;
+    --theme-light: #f8f9fb;
+    --theme-card: #5b7ca8;
+    --theme-border: #6b8bb5;
+    --theme-muted: #344b6d;
     
-    /* Legacy variables for compatibility */
-    --background: 26 38 37;     /* #1a2625 - Much darker */
-    --foreground: 248 249 248;  /* #f8f9f8 - Clean white */
-    --card: 26 38 37;
-    --card-foreground: 248 249 248;
-    --primary: 138 148 145;     /* #8a9491 - Muted teal-gray */
-    --primary-foreground: 26 38 37;
-    --secondary: 138 148 145;
-    --secondary-foreground: 26 38 37;
-    --muted: 138 148 145;
-    --muted-foreground: 248 249 248;
-    --accent: 138 148 145;
-    --accent-foreground: 26 38 37;
-    --border: 138 148 145;
+    --background: 80 110 154;
+    --foreground: 248 249 251;
+    --card: 91 124 168;
+    --card-foreground: 248 249 251;
+    --primary: 255 255 255;
+    --primary-foreground: 80 110 154;
+    --secondary: 255 255 255;
+    --secondary-foreground: 80 110 154;
+    --muted: 52 75 109;
+    --muted-foreground: 248 249 251;
+    --accent: 255 255 255;
+    --accent-foreground: 80 110 154;
+    --border: 107 139 181;
     --radius: 0.5rem;
   }
 }
 
 @layer base {
   body {
-    @apply bg-raytech-dark text-raytech-light;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background: var(--theme-light);
+    color: var(--theme-muted);
   }
 }
 
 @layer components {
+  .gradient-text {
+    background: linear-gradient(135deg, var(--theme-neutral) 0%, var(--theme-accent, var(--theme-neutral)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .gradient-text-primary {
+    background: linear-gradient(135deg, var(--theme-neutral) 0%, color-mix(in srgb, var(--theme-neutral) 70%, white) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
   .glow-text {
-    text-shadow: 0 0 20px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.5);
+    text-shadow: 0 0 20px color-mix(in srgb, var(--theme-neutral) 50%, transparent);
   }
   
   .led-glow {
-    box-shadow: 0 0 30px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.3), 
-                0 0 60px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.2),
-                inset 0 0 20px rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.1);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--theme-neutral) 30%, transparent), 
+                0 0 60px color-mix(in srgb, var(--theme-neutral) 20%, transparent),
+                inset 0 0 20px color-mix(in srgb, var(--theme-neutral) 10%, transparent);
   }
   
   .subtle-grid {
     background-image: 
-      linear-gradient(rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(var(--theme-neutral-rgb, 138, 148, 145), 0.1) 1px, transparent 1px);
+      linear-gradient(rgba(107, 139, 181, 0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(107, 139, 181, 0.5) 1px, transparent 1px);
     background-size: 50px 50px;
   }
   
-  .gradient-text {
-    @apply bg-gradient-to-r from-raytech-neutral to-raytech-light bg-clip-text text-transparent;
+  .pdf-card {
+    background: var(--theme-card);
+    border: 1px solid var(--theme-border);
+    border-radius: 1rem;
+  }
+  
+  .theme-button-primary {
+    background: var(--theme-dark);
+    color: var(--theme-light);
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-button-primary:hover {
+    filter: brightness(0.9);
+    box-shadow: 0 0 20px color-mix(in srgb, var(--theme-dark) 40%, transparent);
+  }
+  
+  .theme-button-secondary {
+    background: transparent;
+    color: var(--theme-dark);
+    border: 2px solid var(--theme-dark);
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-button-secondary:hover {
+    background: var(--theme-dark);
+    color: var(--theme-light);
   }
   
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
   }
   
-  /* Theme-aware utilities */
   .theme-bg-dark {
     background-color: var(--theme-dark);
   }
@@ -71,6 +115,10 @@
   
   .theme-bg-light {
     background-color: var(--theme-light);
+  }
+  
+  .theme-bg-card {
+    background-color: var(--theme-card);
   }
   
   .theme-text-dark {
@@ -84,25 +132,34 @@
   .theme-text-light {
     color: var(--theme-light);
   }
+  
+  .theme-text-muted {
+    color: var(--theme-muted);
+  }
+  
+  .theme-border {
+    border-color: var(--theme-border);
+  }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Theme aware */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-raytech-dark;
+  background: var(--theme-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-raytech-neutral rounded-full;
+  background: var(--theme-dark);
+  border-radius: 9999px;
   transition: background-color 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-raytech-light;
+  opacity: 0.8;
 }
 
 /* Smooth scroll behavior */
@@ -110,14 +167,14 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Focus styles */
+/* Focus styles - Theme aware */
 *:focus {
-  outline: 2px solid #AEB4B2;
+  outline: 2px solid var(--theme-dark);
   outline-offset: 2px;
 }
 
-/* Selection styles */
+/* Selection styles - Theme aware */
 ::selection {
-  background-color: rgba(174, 180, 178, 0.3);
-  color: #F4F4F2;
-} 
+  background-color: color-mix(in srgb, var(--theme-dark) 30%, transparent);
+  color: var(--theme-light);
+}

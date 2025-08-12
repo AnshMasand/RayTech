@@ -4,236 +4,189 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
-import { Building2, Factory, Warehouse, ArrowRight, CheckCircle, Zap, Eye, Thermometer } from 'lucide-react'
-import { useThemeClasses } from '@/lib/ThemeContext'
+import { Sun, Lightbulb, Factory, ArrowRight } from 'lucide-react'
 
 const productCategories = [
   {
-    category: 'Commercial Indoor',
-    icon: Building2,
-    description: 'Office buildings, retail spaces, hospitality',
-    applications: ['Offices', 'Retail', 'Hotels', 'Healthcare'],
-    keyProducts: [
-      { 
-        name: 'LED Panel Lights', 
-        specs: { wattage: '18W-48W', lumens: '2000-5000lm', cri: '80+', lifespan: '50,000hrs' },
-        features: ['Flicker-free', 'Dimmable', 'Emergency backup']
+    category: 'Indoor',
+    icon: Sun,
+    iconColor: 'bg-gradient-orange-yellow',
+    description: 'Comprehensive LED solutions for every lighting need',
+    products: [
+      {
+        name: 'Panel Lights',
+        wattage: '18W-48W',
+        lumens: '2000-5000lm',
+        badge: 'Syska Co-built'
       },
-      { 
-        name: 'Recessed Downlights', 
-        specs: { wattage: '5W-24W', lumens: '500-2400lm', cri: '80+', lifespan: '50,000hrs' },
-        features: ['Anti-glare', 'Multiple beam angles', 'Fire-rated']
+      {
+        name: 'Downlights', 
+        wattage: '5W-24W',
+        lumens: '500-2400lm',
+        badge: 'Syska Co-built'
       },
-    ],
-    certifications: ['BIS', 'Energy Star'],
+      {
+        name: 'Track Lights',
+        wattage: '10W-30W', 
+        lumens: '1000-3000lm',
+        badge: 'Syska Co-built'
+      }
+    ]
   },
   {
-    category: 'Industrial & Warehouse',
-    icon: Warehouse,
-    description: 'Manufacturing facilities, warehouses, logistics',
-    applications: ['Factories', 'Warehouses', 'Cold Storage', 'Logistics'],
-    keyProducts: [
-      { 
-        name: 'High-Bay LED Lights', 
-        specs: { wattage: '100W-300W', lumens: '15000-45000lm', cri: '70+', lifespan: '60,000hrs' },
-        features: ['Motion sensors', 'Daylight harvesting', 'Robust design']
+    category: 'Outdoor',
+    icon: Lightbulb,
+    iconColor: 'bg-gradient-teal-blue',
+    description: 'Comprehensive LED solutions for every lighting need',
+    products: [
+      {
+        name: 'Street Lights',
+        wattage: '30W-150W',
+        lumens: '3000-18000lm'
       },
-      { 
-        name: 'Linear LED Systems', 
-        specs: { wattage: '40W-120W', lumens: '5000-15000lm', cri: '70+', lifespan: '60,000hrs' },
-        features: ['Modular design', 'Easy maintenance', 'IP65 rated']
+      {
+        name: 'Flood Lights',
+        wattage: '20W-200W',
+        lumens: '2000-24000lm'
       },
-    ],
-    certifications: ['BIS', 'ATEX', 'IP65'],
+      {
+        name: 'Solar LED',
+        wattage: '15W-60W',
+        lumens: '1500-7000lm'
+      }
+    ]
   },
   {
-    category: 'Outdoor Infrastructure',
+    category: 'Industrial',
     icon: Factory,
-    description: 'Street lighting, area lighting, architectural',
-    applications: ['Streets', 'Parking', 'Facades', 'Landscapes'],
-    keyProducts: [
-      { 
-        name: 'Street Light Systems', 
-        specs: { wattage: '60W-200W', lumens: '8000-28000lm', cri: '70+', lifespan: '60,000hrs' },
-        features: ['Smart controls', 'Surge protection', 'Weather resistant']
+    iconColor: 'bg-gradient-to-br from-purple-500 to-pink-500',
+    description: 'Comprehensive LED solutions for every lighting need',
+    products: [
+      {
+        name: 'High-Bay Lights',
+        wattage: '50W-300W',
+        lumens: '6000-36000lm'
       },
-      { 
-        name: 'Flood Light Arrays', 
-        specs: { wattage: '50W-500W', lumens: '6000-65000lm', cri: '70+', lifespan: '60,000hrs' },
-        features: ['Asymmetric optics', 'Multiple mounting', 'Corrosion resistant']
+      {
+        name: 'Linear Lights',
+        wattage: '20W-80W',
+        lumens: '2400-9600lm'
       },
-    ],
-    certifications: ['BIS', 'IP66', 'IK08'],
-  },
+      {
+        name: 'Explosion Proof',
+        wattage: '40W-120W',
+        lumens: '4800-14400lm'
+      }
+    ]
+  }
 ]
 
 export default function ProductShowcase() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
-  const { styles, colors } = useThemeClasses()
 
   return (
-    <section ref={ref} className="py-20" style={styles.bgLight}>
+    <section ref={ref} className="py-12 bg-theme-dark">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <p className="text-xl max-w-3xl mx-auto" style={{ color: `${colors.dark}b3` }}>
-            Engineered for commercial and industrial applications with proven performance, 
-            energy efficiency, and long-term reliability.
+          <h2 className="text-5xl lg:text-7xl font-bold mb-6">
+            <span className="text-theme-neutral">Our </span>
+            <span className="text-theme-light">Product </span>
+            <span className="gradient-text">Range</span>
+          </h2>
+          <p className="text-xl text-theme-muted max-w-3xl mx-auto">
+            Comprehensive LED solutions for every lighting need
           </p>
         </motion.div>
 
-        {/* Product Categories */}
-        <div className="space-y-12">
+        {/* Product Categories Grid */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {productCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.category}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
-              className="bg-white rounded-2xl shadow-lg border overflow-hidden"
-              style={{ borderColor: `${colors.neutral}33` }}
+              className="bg-theme-card p-8 group hover:scale-105 transition-transform duration-300 rounded-2xl border"
+              style={{ borderColor: 'var(--theme-border)' }}
             >
-              <div className="p-8">
-                {/* Category Header */}
-                <div className="flex items-start justify-between mb-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-xl flex items-center justify-center" style={styles.bgDark}>
-                      <category.icon className="w-8 h-8" style={styles.textLight} />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold mb-2" style={styles.textDark}>{category.category}</h3>
-                      <p style={{ color: `${colors.dark}99` }}>{category.description}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-sm mb-2" style={{ color: `${colors.dark}99` }}>Applications</div>
-                    <div className="flex flex-wrap gap-2 justify-end">
-                      {category.applications.map((app) => (
-                        <span 
-                          key={app} 
-                          className="px-3 py-1 text-xs rounded-full"
-                          style={{ 
-                            backgroundColor: `${colors.neutral}33`,
-                            color: colors.dark
-                          }}
-                        >
-                          {app}
+              {/* Category Header */}
+              <div className="text-center mb-8">
+                <div className={`w-16 h-16 rounded-2xl ${category.iconColor} flex items-center justify-center mx-auto mb-4 shadow-lg`}>
+                  <category.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-theme-light mb-2">{category.category}</h3>
+              </div>
+
+              {/* Products List */}
+              <div className="space-y-6">
+                {category.products.map((product, productIndex) => (
+                  <div key={product.name} className="border-b border-theme-border last:border-0 pb-4 last:pb-0">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-theme-light">{product.name}</h4>
+                      {(product as any).badge && (
+                        <span className="px-2 py-1 text-xs font-medium rounded-full" style={{ backgroundColor: 'var(--theme-neutral)', color: 'var(--theme-dark)' }}>
+                          {(product as any).badge}
                         </span>
-                      ))}
+                      )}
+                    </div>
+                    <div className="flex justify-between text-sm text-theme-muted">
+                      <span>⚡ {product.wattage}</span>
+                      <span>💡 {product.lumens}</span>
                     </div>
                   </div>
-                </div>
-
-                {/* Products Grid */}
-                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                  {category.keyProducts.map((product, productIndex) => (
-                    <div 
-                      key={product.name} 
-                      className="rounded-lg p-6 border"
-                      style={{ 
-                        backgroundColor: `${colors.light}80`,
-                        borderColor: `${colors.neutral}1a`
-                      }}
-                    >
-                      <h4 className="text-lg font-semibold mb-3" style={styles.textDark}>{product.name}</h4>
-                      
-                      {/* Technical Specs */}
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div className="flex items-center gap-2">
-                          <Zap className="w-4 h-4" style={styles.textNeutral} />
-                          <span className="text-sm" style={{ color: `${colors.dark}b3` }}>{product.specs.wattage}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Eye className="w-4 h-4" style={styles.textNeutral} />
-                          <span className="text-sm" style={{ color: `${colors.dark}b3` }}>{product.specs.lumens}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Thermometer className="w-4 h-4" style={styles.textNeutral} />
-                          <span className="text-sm" style={{ color: `${colors.dark}b3` }}>CRI {product.specs.cri}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4" style={styles.textNeutral} />
-                          <span className="text-sm" style={{ color: `${colors.dark}b3` }}>{product.specs.lifespan}</span>
-                        </div>
-                      </div>
-
-                      {/* Key Features */}
-                      <div className="space-y-2">
-                        {product.features.map((feature) => (
-                          <div key={feature} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full" style={styles.bgNeutral}></div>
-                            <span className="text-sm" style={{ color: `${colors.dark}b3` }}>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Certifications & CTA */}
-                <div className="flex items-center justify-between pt-6 border-t" style={{ borderColor: `${colors.neutral}33` }}>
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm" style={{ color: `${colors.dark}99` }}>Certifications:</span>
-                    <div className="flex gap-2">
-                      {category.certifications.map((cert) => (
-                        <span 
-                          key={cert} 
-                          className="px-3 py-1 text-xs font-medium rounded-full"
-                          style={{ 
-                            backgroundColor: `${colors.dark}1a`,
-                            color: colors.dark
-                          }}
-                        >
-                          {cert}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <Link
-                    href={`/products/${category.category.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="inline-flex items-center gap-2 px-6 py-2 font-medium rounded-lg transition-colors duration-300 hover:opacity-90"
-                    style={{ ...styles.bgDark, ...styles.textLight }}
-                  >
-                    View Details
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
+                ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
+        {/* 3D Configurator Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center mt-16"
+          className="text-center mb-16"
         >
-          <div className="rounded-2xl p-8 text-center" style={styles.bgDark}>
-            <h3 className="text-2xl font-bold mb-4" style={styles.textLight}>
-              Need Custom Solutions?
+          <div className="bg-theme-card p-12 max-w-4xl mx-auto rounded-2xl border" style={{ borderColor: 'var(--theme-border)' }}>
+            {/* 3D Icon */}
+            <div className="w-24 h-24 rounded-full bg-gradient-primary flex items-center justify-center mx-auto mb-8 shadow-xl">
+              <span className="text-3xl font-bold text-theme-dark">3D</span>
+            </div>
+            
+            <h3 className="text-3xl font-bold text-theme-light mb-4">
+              Build Your Custom Fixture
             </h3>
-            <p className="mb-6 max-w-2xl mx-auto" style={styles.textNeutral}>
-              Our engineering team can design custom LED solutions tailored to your specific requirements, 
-              from concept to manufacturing.
+            <p className="text-xl text-theme-muted mb-8 max-w-2xl mx-auto">
+              Use our 3D configurator to design and visualize your
+              <br />
+              perfect lighting solution
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3 font-semibold rounded-lg transition-colors duration-300 hover:opacity-90"
-              style={{ ...styles.bgLight, ...styles.textDark }}
-            >
-              Discuss Your Project
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            
+            {/* Action Buttons */}
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <button className="theme-button-secondary px-6 py-3">
+                Explore Indoor
+              </button>
+              <button className="theme-button-secondary px-6 py-3">
+                Explore Outdoor  
+              </button>
+              <button className="theme-button-secondary px-6 py-3">
+                Explore Industrial
+              </button>
+            </div>
+            
+            <button className="theme-button-primary px-8 py-4 text-lg font-semibold">
+              Launch Configurator
+            </button>
           </div>
         </motion.div>
       </div>
     </section>
   )
-} 
+}

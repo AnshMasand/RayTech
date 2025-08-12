@@ -1,6 +1,6 @@
 # Raytech LED Website
 
-A modern, dark-themed Next.js website for Raytech LED, showcasing their state-of-the-art manufacturing facility, debt-free operations, and strategic partnership with Syska LED.
+A modern, dark-themed Next.js website for Raytech LED, showcasing their state-of-the-art manufacturing facility, strong financial operations, and strategic partnership with Syska LED.
 
 ## 🌟 Key Features
 
@@ -18,7 +18,7 @@ A modern, dark-themed Next.js website for Raytech LED, showcasing their state-of
 
 ### Trust Signals
 - **Factory Showcase**: Virtual tour with production stats and timeline
-- **Financial Strength**: Prominent display of debt-free status and metrics
+- **Financial Strength**: Prominent display of strong financial metrics and stability
 - **Syska Partnership**: Dedicated section highlighting strategic alliance
 - **Real-time Counters**: Factory uptime and production statistics
 
@@ -88,7 +88,7 @@ raytech/
 2. **Products**: Categorized LED solutions (Indoor/Outdoor/Industrial)
 3. **Light Gallery**: Before/after comparisons with savings metrics
 4. **Factory Tour**: 360° virtual tour and production timeline
-5. **Financial Strength**: Debt-free metrics and CFO message
+5. **Financial Strength**: Strong financial metrics and CFO message
 6. **Syska Partnership**: Success story and co-engineered products
 7. **ROI Calculator**: Interactive savings calculator
 8. **Footer**: Comprehensive links and trust seals

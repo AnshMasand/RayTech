@@ -8,47 +8,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Current Theme - Professional Teal (Darker)
-        'raytech': {
-          'dark': '#1a2625',      // Much darker teal base
-          'neutral': '#8a9491',   // Muted teal-gray accent
-          'light': '#f8f9f8',     // Pure white background
+        'theme': {
+          'dark': '#506e9a',      // Primary grayblue background
+          'neutral': '#ffffff',   // White accent
+          'light': '#f8f9fb',     // Light background
+          'card': '#5b7ca8',      // Lighter grayblue cards
+          'border': '#6b8bb5',    // Grayblue borders
+          'muted': '#344b6d',     // Darker grayblue text
         },
-        
-        // Theme 1: Corporate Blue (Syska-inspired)
-        'corporate': {
-          'dark': '#0f1419',      // Deep navy blue
-          'neutral': '#3b82f6',   // Professional blue
-          'light': '#ffffff',     // Pure white
-        },
-        
-        // Theme 2: Modern Gray (Signify-inspired)
-        'modern': {
-          'dark': '#111827',      // Charcoal gray
-          'neutral': '#6b7280',   // Medium gray
-          'light': '#f9fafb',     // Off-white
-        },
-        
-        // Theme 3: Tech Green (Industrial)
-        'tech': {
-          'dark': '#0f1b0f',      // Deep forest green
-          'neutral': '#10b981',   // Emerald green
-          'light': '#f0fdf4',     // Light green tint
-        },
-        
-        // Theme 4: Premium Purple (SaaS)
-        'premium': {
-          'dark': '#1e1b4b',      // Deep indigo
-          'neutral': '#8b5cf6',   // Purple accent
-          'light': '#faf5ff',     // Light purple tint
-        },
-        
-        // Theme 5: Warm Orange (Energy)
-        'energy': {
-          'dark': '#1c1917',      // Dark brown
-          'neutral': '#f97316',   // Orange accent
-          'light': '#fffbeb',     // Warm white
-        },
+      },
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(135deg, var(--theme-neutral) 0%, var(--theme-accent, var(--theme-neutral)) 100%)',
+        'gradient-primary-light': 'linear-gradient(135deg, var(--theme-neutral) 0%, color-mix(in srgb, var(--theme-neutral) 70%, white) 100%)',
+        'gradient-radial': 'radial-gradient(ellipse at center, var(--tw-gradient-stops))',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -61,8 +33,12 @@ module.exports = {
       },
       keyframes: {
         glow: {
-          '0%': { boxShadow: '0 0 20px #FD8100' },
-          '100%': { boxShadow: '0 0 30px #FD8100, 0 0 40px #FD8100' },
+          '0%': { boxShadow: '0 0 20px rgba(253, 129, 0, 0.5)' },
+          '100%': { boxShadow: '0 0 30px rgba(253, 129, 0, 0.8), 0 0 40px rgba(253, 129, 0, 0.6)' },
+        },
+        'glow-teal': {
+          '0%': { boxShadow: '0 0 20px rgba(0, 194, 204, 0.5)' },
+          '100%': { boxShadow: '0 0 30px rgba(0, 194, 204, 0.8), 0 0 40px rgba(0, 194, 204, 0.6)' },
         },
         fadeIn: {
           '0%': { opacity: '0' },

@@ -31,9 +31,9 @@ export default function WhatsAppCTA() {
         
         {/* Tooltip */}
         <div className="absolute bottom-full right-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-          <div className="bg-raytech-dark text-raytech-light text-sm px-4 py-2 rounded-lg shadow-lg whitespace-nowrap">
+          <div className="bg-theme-dark text-theme-light text-sm px-4 py-2 rounded-lg shadow-lg whitespace-nowrap">
             Get quote in 10 min
-            <div className="absolute bottom-0 right-4 transform translate-y-1/2 rotate-45 w-2 h-2 bg-raytech-dark" />
+            <div className="absolute bottom-0 right-4 transform translate-y-1/2 rotate-45 w-2 h-2 bg-theme-dark" />
           </div>
         </div>
       </a>

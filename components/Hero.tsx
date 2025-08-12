@@ -1,144 +1,135 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Factory, ArrowRight, CheckCircle } from 'lucide-react'
+import { Factory, ArrowRight, CheckCircle, Zap, Award, Building } from 'lucide-react'
 import Link from 'next/link'
-import { useThemeClasses } from '@/lib/ThemeContext'
 
-const manufacturingMetrics = [
-  { value: '50,000', label: 'sq ft Manufacturing' },
-  { value: '120K', label: 'Boards/Day Capacity' },
-  { value: '99.8%', label: 'Operational Uptime' },
-  { value: '15+', label: 'Quality Tests' },
+const badges = [
+  { icon: Factory, label: 'SOTA Factory', color: 'orange' },
+  { icon: Zap, label: 'Financially Strong', color: 'teal' },
+  { icon: Award, label: 'Syska Partner', color: 'orange' },
 ]
 
 export default function Hero() {
-  const { styles, colors } = useThemeClasses()
-
   return (
-    <section className="relative overflow-hidden" style={{ ...styles.bgLight, ...styles.textDark }}>
+    <section className="relative min-h-[80vh] overflow-hidden bg-theme-dark">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23354544' fill-opacity='1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 subtle-grid" />
       </div>
 
-      <div className="container mx-auto px-4 pt-32 pb-20 relative z-10">
+      {/* Orange Banner */}
+      <div className="w-full bg-gradient-primary text-center py-2 relative z-10">
+        <span className="text-sm font-medium text-theme-light">
+          Strategic Partner to Syska LED since 2024
+        </span>
+      </div>
+
+      <div className="container mx-auto px-4 pt-16 pb-20 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Content */}
+                      <div className="text-center space-y-8">
+            
+            {/* Power Button Toggle */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
-            >
-              {/* Partnership Badge */}
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border"
-                style={{
-                  backgroundColor: `${colors.dark}1a`,
-                  borderColor: `${colors.dark}33`
-                }}
-              >
-                <CheckCircle className="w-4 h-4" style={styles.textDark} />
-                <span className="text-sm font-medium">Strategic Partner to Syska LED</span>
-              </div>
-
-              {/* Main Headline */}
-              <div>
-                <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-                  Professional LED
-                  <br />
-                  <span style={styles.textNeutral}>Manufacturing</span>
-                  <br />
-                  Excellence
-                </h1>
-                <p className="text-xl max-w-xl leading-relaxed" style={{ color: `${colors.dark}b3` }}>
-                  State-of-the-art LED solutions engineered for commercial and industrial applications.
-                  Delivering reliable, energy-efficient lighting systems with proven performance.
-                </p>
-              </div>
-
-
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/products"
-                  className="inline-flex items-center justify-center px-8 py-4 font-semibold rounded-lg transition-all duration-300 group hover:opacity-90"
-                  style={{ ...styles.bgDark, ...styles.textLight }}
-                >
-                  View Product Catalog
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 font-semibold rounded-lg transition-all duration-300 hover:opacity-90"
-                  style={{
-                    borderColor: colors.dark,
-                    color: colors.dark
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = colors.dark
-                    e.currentTarget.style.color = colors.light
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = 'transparent'
-                    e.currentTarget.style.color = colors.dark
-                  }}
-                >
-                  Request Quote
-                </Link>
-              </div>
-            </motion.div>
-
-            {/* Right Column - Visual/Stats */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
+              className="flex justify-center mb-8"
             >
-              {/* Factory Visual */}
-              <div className="rounded-2xl p-8 text-center" style={styles.bgDark}>
-                <Factory className="w-24 h-24 mx-auto mb-4" style={styles.textNeutral} />
-                <h3 className="text-xl font-semibold mb-2" style={styles.textLight}>
-                  Advanced Manufacturing Facility
-                </h3>
-                <p className="text-sm mb-6" style={styles.textNeutral}>
-                  State-of-the-art production facility with automated SMT lines
-                </p>
-
-                {/* Manufacturing Metrics */}
-                <div className="grid grid-cols-2 gap-4">
-                  {manufacturingMetrics.map((metric, index) => (
-                    <motion.div
-                      key={metric.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                      className="backdrop-blur-sm rounded-lg p-4 border text-center"
-                      style={{
-                        backgroundColor: `${colors.light}1a`,
-                        borderColor: `${colors.neutral}33`
-                      }}
-                    >
-                      <div className="text-xl font-bold mb-1" style={styles.textLight}>
-                        {metric.value}
-                      </div>
-                      <div className="text-xs" style={{ color: `${colors.neutral}cc` }}>
-                        {metric.label}
-                      </div>
-                    </motion.div>
-                  ))}
+              <div className="relative">
+                <div className="w-24 h-12 bg-theme-neutral rounded-full flex items-center justify-center led-glow">
+                  <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                    <div className="w-4 h-4 text-theme-neutral">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C13.1 2 14 2.9 14 4V12C14 13.1 13.1 14 12 14C10.9 14 10 13.1 10 12V4C10 2.9 10.9 2 12 2M21 14C21 17.9 17.9 21 14 21H13V22C13 22.6 12.6 23 12 23S11 22.6 11 22V21H10C6.1 21 3 17.9 3 14C3 10.1 6.1 7 10 7H14C17.9 7 21 10.1 21 14Z"/>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
+
+            {/* Main Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-6">
+                <span className="gradient-text">Illuminate</span>
+                <br />
+                <span className="text-theme-light">Your Future</span>
+              </h1>
+              <p className="text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed text-theme-muted mb-8">
+                State-of-the-art LED solutions engineered for excellence. Trusted
+                <br />
+                by Syska. Built for India.
+              </p>
+            </motion.div>
+
+            {/* Badge Elements */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-wrap justify-center gap-6 mb-8"
+            >
+              {badges.map((badge, index) => (
+                <motion.div
+                  key={badge.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+                  className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-theme-neutral"
+                  style={{
+                    backgroundColor: badge.color === 'orange' 
+                      ? `var(--theme-neutral)20` 
+                      : `var(--theme-accent)20`
+                  }}
+                >
+                  <badge.icon 
+                    className="w-5 h-5"
+                    style={{
+                      color: badge.color === 'orange' ? 'var(--theme-neutral)' : 'var(--theme-accent)'
+                    }}
+                  />
+                  <span className="font-medium text-theme-light">{badge.label}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex flex-col sm:flex-row gap-6 justify-center"
+            >
+              <Link
+                href="/products"
+                className="theme-button-primary inline-flex items-center justify-center px-8 py-4 text-lg group"
+              >
+                Explore Our Range
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/calculator"
+                className="theme-button-secondary inline-flex items-center justify-center px-8 py-4 text-lg"
+              >
+                Calculate Savings
+              </Link>
+            </motion.div>
+
+
           </div>
         </div>
       </div>
+
+      {/* Bottom fade effect */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t to-transparent" 
+        style={{ backgroundImage: `linear-gradient(to top, var(--theme-dark), transparent)` }}
+      />
     </section>
   )
-} 
+}
