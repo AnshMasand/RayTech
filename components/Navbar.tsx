@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
 
 const navItems = [
@@ -158,59 +158,79 @@ export default function Navbar() {
       </div>
 
       {/* Premium Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-x-0 top-20 sm:top-24 bottom-0 backdrop-blur-xl lg:hidden bg-white/98 border-t border-theme-border shadow-xl z-40"
-        >
-          <div className="flex flex-col h-full max-h-screen">
-            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-1.5 sm:space-y-2 min-h-0">
-              {navItems.map((item) => (
-                <div key={item.name} className="space-y-2">
-                  <Link
-                    href={item.href}
-                    className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl sm:rounded-2xl text-sm sm:text-base text-theme-text-primary hover:bg-theme-accent/8 active:bg-theme-accent/12 transition-colors duration-200 font-semibold"
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[98] lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            
+            {/* Mobile Menu */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="fixed left-0 right-0 top-[5rem] sm:top-[6rem] lg:hidden z-[99]"
+              style={{ maxHeight: 'calc(100vh - 5rem)' }}
+            >
+              <div className="mx-4 bg-white rounded-2xl shadow-2xl border border-theme-border overflow-hidden">
+                {/* Navigation Items */}
+                <div className="max-h-[60vh] overflow-y-auto py-2">
+                  {navItems.map((item, index) => (
+                    <div key={item.name} className="px-1">
+                      <Link
+                        href={item.href}
+                        className="flex items-center justify-between px-4 py-3 mx-2 rounded-xl text-base text-theme-text-primary hover:bg-theme-accent/8 active:bg-theme-accent/12 transition-colors duration-200 font-semibold"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span>{item.name}</span>
+                        <ArrowRight className="w-4 h-4 opacity-50" />
+                      </Link>
+                      {item.dropdown && (
+                        <div className="ml-6 mr-2 mb-2 space-y-1">
+                          {item.dropdown.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className="block px-4 py-2 rounded-lg text-sm text-theme-text-secondary hover:text-theme-primary hover:bg-theme-accent/5 active:bg-theme-accent/8 transition-colors duration-200"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                      {index < navItems.length - 1 && (
+                        <div className="mx-4 my-2 border-b border-theme-border/30" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Mobile CTA */}
+                <div className="p-4 border-t border-theme-border bg-theme-background/50">
+                  <a 
+                    href="https://wa.me/+919876543210?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="theme-button-primary w-full px-6 py-3.5 text-base font-semibold block text-center rounded-xl"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <span>{item.name}</span>
-                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 opacity-50" />
-                  </Link>
-                  {item.dropdown && (
-                    <div className="ml-4 sm:ml-6 space-y-1">
-                      {item.dropdown.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block p-2 sm:p-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm text-theme-text-secondary hover:text-theme-primary hover:bg-theme-accent/5 active:bg-theme-accent/8 transition-colors duration-200"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                    Get Quote
+                  </a>
                 </div>
-              ))}
-            </div>
-            
-            {/* Mobile CTA */}
-            <div className="flex-shrink-0 p-3 sm:p-4 border-t border-theme-border bg-gradient-to-b from-white to-theme-background/50">
-              <a 
-                href="https://wa.me/+919876543210?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="theme-button-primary w-full px-4 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-semibold block text-center"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Get Quote
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      )}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }
