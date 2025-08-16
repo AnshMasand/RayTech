@@ -132,9 +132,14 @@ export default function Navbar() {
             
             {/* Premium CTA Button */}
             <div className="flex items-center ml-4 lg:ml-6 pl-4 lg:pl-6 border-l border-theme-border/30">
-              <button className="theme-button-primary px-6 lg:px-8 py-2.5 lg:py-3 text-xs lg:text-sm font-semibold tracking-wide">
+              <a 
+                href="https://wa.me/+919876543210?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="theme-button-primary px-6 lg:px-8 py-2.5 lg:py-3 text-xs lg:text-sm font-semibold tracking-wide"
+              >
                 Get Quote
-              </button>
+              </a>
             </div>
           </div>
 
@@ -155,11 +160,11 @@ export default function Navbar() {
       {/* Premium Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, x: '100%' }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: '100%' }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 top-16 sm:top-20 lg:top-24 backdrop-blur-xl lg:hidden bg-white/98 border-t border-theme-border shadow-xl"
+          className="fixed inset-0 top-20 sm:top-24 backdrop-blur-xl lg:hidden bg-white/98 border-t border-theme-border shadow-xl z-40"
         >
           <div className="flex flex-col h-full">
             <div className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 space-y-1.5 sm:space-y-2">
@@ -193,12 +198,15 @@ export default function Navbar() {
             
             {/* Mobile CTA */}
             <div className="p-3 sm:p-4 lg:p-6 border-t border-theme-border bg-gradient-to-b from-white to-theme-background/50">
-              <button 
-                className="theme-button-primary w-full px-4 sm:px-6 py-3 sm:py-3.5 lg:py-4 text-sm sm:text-base lg:text-lg font-semibold"
+              <a 
+                href="https://wa.me/+919876543210?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="theme-button-primary w-full px-4 sm:px-6 py-3 sm:py-3.5 lg:py-4 text-sm sm:text-base lg:text-lg font-semibold block text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Quote
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>
