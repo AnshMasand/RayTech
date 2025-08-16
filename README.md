@@ -11,7 +11,6 @@ A modern, dark-themed Next.js website for Raytech LED, showcasing their state-of
 - **Responsive Design**: Mobile-first approach with beautiful desktop layouts
 
 ### Interactive Components
-- **ROI Calculator**: Calculate energy and cost savings by switching to LED
 - **Light Gallery**: Before/after slider showcasing LED transformations
 - **3D Product Configurator**: (Coming soon) WebGL-based product customization
 - **WhatsApp Integration**: Quick quote requests via floating WhatsApp button
@@ -67,7 +66,6 @@ raytech/
 │   ├── FactoryShowcase.tsx
 │   ├── FinancialStrength.tsx
 │   ├── SyskaPartnership.tsx
-│   ├── ROICalculator.tsx
 │   ├── WhatsAppCTA.tsx
 │   └── Footer.tsx
 ├── public/             # Static assets
@@ -90,7 +88,6 @@ raytech/
 4. **Factory Tour**: 360° virtual tour and production timeline
 5. **Financial Strength**: Strong financial metrics and CFO message
 6. **Syska Partnership**: Success story and co-engineered products
-7. **ROI Calculator**: Interactive savings calculator
 8. **Footer**: Comprehensive links and trust seals
 
 ## 🔧 Customization
