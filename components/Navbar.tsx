@@ -164,15 +164,15 @@ export default function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 top-20 sm:top-24 backdrop-blur-xl lg:hidden bg-white/98 border-t border-theme-border shadow-xl z-40"
+          className="fixed inset-x-0 top-20 sm:top-24 bottom-0 backdrop-blur-xl lg:hidden bg-white/98 border-t border-theme-border shadow-xl z-40"
         >
-          <div className="flex flex-col h-full">
-            <div className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 space-y-1.5 sm:space-y-2">
+          <div className="flex flex-col h-full max-h-screen">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-1.5 sm:space-y-2 min-h-0">
               {navItems.map((item) => (
                 <div key={item.name} className="space-y-2">
                   <Link
                     href={item.href}
-                    className="flex items-center justify-between p-2.5 sm:p-3 lg:p-4 rounded-xl sm:rounded-2xl text-sm sm:text-base text-theme-text-primary hover:bg-theme-accent/8 active:bg-theme-accent/12 transition-colors duration-200 font-semibold"
+                    className="flex items-center justify-between p-2.5 sm:p-3 rounded-xl sm:rounded-2xl text-sm sm:text-base text-theme-text-primary hover:bg-theme-accent/8 active:bg-theme-accent/12 transition-colors duration-200 font-semibold"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <span>{item.name}</span>
@@ -184,7 +184,7 @@ export default function Navbar() {
                         <Link
                           key={subItem.name}
                           href={subItem.href}
-                          className="block p-2 sm:p-2.5 lg:p-3 rounded-lg sm:rounded-xl text-xs sm:text-sm text-theme-text-secondary hover:text-theme-primary hover:bg-theme-accent/5 active:bg-theme-accent/8 transition-colors duration-200"
+                          className="block p-2 sm:p-2.5 rounded-lg sm:rounded-xl text-xs sm:text-sm text-theme-text-secondary hover:text-theme-primary hover:bg-theme-accent/5 active:bg-theme-accent/8 transition-colors duration-200"
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {subItem.name}
@@ -197,12 +197,12 @@ export default function Navbar() {
             </div>
             
             {/* Mobile CTA */}
-            <div className="p-3 sm:p-4 lg:p-6 border-t border-theme-border bg-gradient-to-b from-white to-theme-background/50">
+            <div className="flex-shrink-0 p-3 sm:p-4 border-t border-theme-border bg-gradient-to-b from-white to-theme-background/50">
               <a 
                 href="https://wa.me/+919876543210?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="theme-button-primary w-full px-4 sm:px-6 py-3 sm:py-3.5 lg:py-4 text-sm sm:text-base lg:text-lg font-semibold block text-center"
+                className="theme-button-primary w-full px-4 sm:px-6 py-3 sm:py-3.5 text-sm sm:text-base font-semibold block text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Get Quote
