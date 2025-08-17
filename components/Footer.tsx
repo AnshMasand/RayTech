@@ -7,36 +7,19 @@ const footerSections = {
   products: {
     title: 'Products',
     links: [
-      { name: 'Indoor Lighting', href: '/products/indoor' },
-      { name: 'Outdoor Lighting', href: '/products/outdoor' },
-      { name: 'Industrial Lighting', href: '/products/industrial' },
-      { name: 'Build Your Fixture', href: '/configurator' },
-    ]
-  },
-  solutions: {
-    title: 'Solutions', 
-    links: [
-      { name: 'Retail', href: '/solutions/retail' },
-      { name: 'Warehousing', href: '/solutions/warehousing' },
-      { name: 'Smart City', href: '/solutions/smart-city' },
-      { name: 'Case Studies', href: '/case-studies' },
-    ]
-  },
-  resources: {
-    title: 'Resources',
-    links: [
-      { name: 'Tech Vault', href: '/tech-vault' },
-      { name: 'Blog & Insights', href: '/blog' },
-      { name: 'BIS Certificates', href: '/certificates' },
+      { name: 'LED Battens', href: '/#products' },
+      { name: 'LED Bulbs', href: '/#products' },
+      { name: 'Panel & Down Lights', href: '/#products' },
+      { name: 'View Full Catalog', href: '/products-catalog' },
     ]
   },
   company: {
     title: 'Company',
     links: [
       { name: 'About Us', href: '/about' },
-      { name: 'Factory Tour', href: '/factory-tour' },
-      { name: 'CSR Initiatives', href: '/csr' },
-      { name: 'Contact', href: '/contact' },
+      { name: 'Our Team', href: '/team' },
+      { name: 'Our Vision', href: '/vision' },
+      { name: 'Factory Tour', href: '/#factory' },
     ]
   },
 }
@@ -53,53 +36,49 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         
         {/* Main Footer Content */}
-        <div className="py-12 sm:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
+        <div className="py-8 sm:py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-theme-neutral rounded-full led-glow flex items-center justify-center">
-                <span className="font-bold text-lg sm:text-xl text-theme-dark">R</span>
+            <div className="flex items-center space-x-2 mb-3">
+              <div className="w-8 h-8 bg-theme-neutral rounded-full led-glow flex items-center justify-center">
+                <span className="font-bold text-base text-theme-dark">R</span>
               </div>
               <div>
-                <div className="text-xl sm:text-2xl font-bold text-theme-light">Raytech LED</div>
+                <div className="text-lg font-bold text-theme-light">Raytech LED</div>
               </div>
             </div>
             
-            <p className="text-sm sm:text-base text-theme-muted mb-6 sm:mb-8 leading-relaxed">
-              State-of-the-art LED manufacturing
-              <br />
-              facility delivering innovative lighting
-              <br />
-              solutions. Strategic partner to Syska
-              <br />
-              LED.
+            <p className="text-xs text-theme-muted mb-4 leading-relaxed">
+              State-of-the-art LED manufacturing facility delivering innovative lighting solutions. Strategic partner to Syska LED.
             </p>
             
             {/* Contact Info */}
-            <div className="space-y-3 sm:space-y-4">
-              <div className="flex items-center gap-2 sm:gap-3">
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-theme-muted" />
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-theme-muted" />
                 <div>
-                  <a href="tel:+919876543210" className="text-sm sm:text-base text-theme-light transition-colors" onMouseEnter={(e) => e.currentTarget.style.color = 'var(--theme-neutral)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--theme-light)'}>
-                    +91 98765 43210
+                  <a href="tel:+919892048600" className="text-xs text-theme-light hover:text-theme-neutral transition-colors">
+                    +91 98920 48600
                   </a>
                 </div>
               </div>
               
-              <div className="flex items-center gap-2 sm:gap-3">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-theme-muted" />
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-theme-muted" />
                 <div>
-                  <a href="mailto:info@raytech.net.in" className="text-sm sm:text-base text-theme-light transition-colors" onMouseEnter={(e) => e.currentTarget.style.color = 'var(--theme-neutral)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--theme-light)'}>
+                  <a href="mailto:info@raytech.net.in" className="text-xs text-theme-light hover:text-theme-neutral transition-colors">
                     info@raytech.net.in
                   </a>
                 </div>
               </div>
               
-              <div className="flex items-start gap-2 sm:gap-3">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-theme-muted mt-0.5" />
-                <div className="text-sm sm:text-base text-theme-light">
-                  Industrial Area, Phase 2<br />
-                  Gurugram, Haryana 122001
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-theme-muted mt-0.5" />
+                <div className="text-xs text-theme-light">
+                  Ground Floor, Gala No 13G<br />
+                  Thacker Industrial Estate<br />
+                  N M Joshi Road, Chinchpokli West<br />
+                  Mumbai, Maharashtra 400011
                 </div>
               </div>
             </div>
@@ -108,15 +87,13 @@ export default function Footer() {
           {/* Footer Links */}
           {Object.entries(footerSections).map(([key, section]) => (
             <div key={key}>
-              <h3 className="text-base sm:text-lg font-semibold text-theme-light mb-4 sm:mb-6">{section.title}</h3>
-              <ul className="space-y-2 sm:space-y-3">
+              <h3 className="text-sm font-semibold text-theme-light mb-3">{section.title}</h3>
+              <ul className="space-y-1.5">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link 
                       href={link.href} 
-                      className="text-theme-muted transition-colors duration-200 text-sm"
-                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--theme-neutral)'}
-                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--theme-muted)'}
+                      className="text-theme-muted hover:text-theme-neutral transition-colors duration-200 text-xs"
                     >
                       {link.name}
                     </Link>
@@ -128,22 +105,22 @@ export default function Footer() {
         </div>
 
         {/* Certifications */}
-        <div className="py-8 sm:py-12 border-t border-theme-border">
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8">
+        <div className="py-4 sm:py-6 border-t border-theme-border">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
             {certifications.map((cert, index) => (
-              <div key={index} className="flex items-center gap-2 sm:gap-3">
-                <span className="text-xl sm:text-2xl">{cert.icon}</span>
-                <span className="text-sm sm:text-base text-theme-neutral font-medium">{cert.text}</span>
+              <div key={index} className="flex items-center gap-2">
+                <span className="text-base">{cert.icon}</span>
+                <span className="text-xs text-theme-neutral font-medium">{cert.text}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 sm:py-8 border-t border-theme-border">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6">
-            <div className="text-xs sm:text-sm text-theme-muted text-center sm:text-left">
-              © 2025 Raytech LED. All rights reserved. | Privacy Policy | Terms of Service
+        <div className="py-3 sm:py-4 border-t border-theme-border">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div className="text-[10px] sm:text-xs text-theme-muted text-center sm:text-left">
+              © 2025 Raytech LED. All rights reserved.
             </div>
           </div>
         </div>

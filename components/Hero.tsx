@@ -19,14 +19,14 @@ export default function Hero() {
     const updateThumbPosition = () => {
       const width = window.innerWidth
       if (width < 640) {
-        // Mobile: w-24 (96px) - thumb w-9 (36px) - 8px margin = 52px
-        setThumbPosition({ on: 52, off: 4 })
+        // Mobile: w-20 (80px) - thumb w-8 (32px) - 8px margin = 40px
+        setThumbPosition({ on: 40, off: 4 })
       } else if (width < 1024) {
-        // Tablet: w-28 (112px) - thumb w-11 (44px) - 8px margin = 60px  
-        setThumbPosition({ on: 60, off: 4 })
+        // Tablet: w-24 (96px) - thumb w-9 (36px) - 8px margin = 52px  
+        setThumbPosition({ on: 52, off: 4 })
       } else {
-        // Desktop: w-32 (128px) - thumb w-12 (48px) - 8px margin = 72px
-        setThumbPosition({ on: 72, off: 4 })
+        // Desktop: w-28 (112px) - thumb w-10 (40px) - 8px margin = 64px
+        setThumbPosition({ on: 64, off: 4 })
       }
     }
 
@@ -70,7 +70,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 pt-12 sm:pt-16 lg:pt-20 pb-16 sm:pb-20 lg:pb-24 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-12">
             
@@ -79,7 +79,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex justify-center mb-12"
+              className="flex justify-center items-center gap-3 sm:gap-4 lg:gap-5 mb-12"
             >
               <button
                 onClick={() => setIsPowerOn(!isPowerOn)}
@@ -87,19 +87,19 @@ export default function Hero() {
                 aria-label="Power switch"
               >
                 {/* Switch Track */}
-                <div className={`relative w-24 h-12 sm:w-28 sm:h-14 lg:w-32 lg:h-16 rounded-full transition-all duration-700 hover:scale-105 ${
+                <div className={`relative w-20 h-10 sm:w-24 sm:h-12 lg:w-28 lg:h-14 rounded-full transition-all duration-700 hover:scale-105 ${
                   isPowerOn 
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-lg shadow-blue-500/30' 
-                    : 'bg-gradient-to-r from-gray-800 to-gray-900 shadow-lg'
+                    ? 'bg-gradient-to-r from-blue-500/80 to-blue-600/80 shadow-md shadow-blue-500/20' 
+                    : 'bg-gradient-to-r from-gray-700 to-gray-800 shadow-md'
                 }`}>
                   
                   {/* OFF/ON Labels */}
-                  <div className="absolute inset-0 flex items-center justify-between px-2.5 sm:px-3 lg:px-4 pointer-events-none">
-                    <span className={`text-[10px] sm:text-xs font-bold transition-all duration-500 select-none ${
-                      isPowerOn ? 'text-white/30' : 'text-gray-400'
+                  <div className="absolute inset-0 flex items-center justify-between px-2 sm:px-2.5 lg:px-3 pointer-events-none">
+                    <span className={`text-[9px] sm:text-[10px] lg:text-xs font-semibold transition-all duration-500 select-none ${
+                      isPowerOn ? 'text-white/20' : 'text-gray-500'
                     }`}>OFF</span>
-                    <span className={`text-[10px] sm:text-xs font-bold transition-all duration-500 select-none ${
-                      isPowerOn ? 'text-white' : 'text-gray-600'
+                    <span className={`text-[9px] sm:text-[10px] lg:text-xs font-semibold transition-all duration-500 select-none ${
+                      isPowerOn ? 'text-white/90' : 'text-gray-600'
                     }`}>ON</span>
                   </div>
                   
@@ -114,17 +114,17 @@ export default function Hero() {
                       stiffness: 500, 
                       damping: 30 
                     }}
-                    className="absolute top-1 sm:top-1 lg:top-1.5"
+                    className="absolute top-1 sm:top-1 lg:top-1"
                   >
-                    <div className={`w-9 h-9 sm:w-11 sm:h-11 lg:w-12 lg:h-12 rounded-full flex items-center justify-center transition-all duration-500 ${
+                    <div className={`w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
                       isPowerOn 
-                        ? 'bg-white shadow-lg' 
-                        : 'bg-gray-700 shadow-inner'
+                        ? 'bg-white shadow-md' 
+                        : 'bg-gray-600 shadow-inner'
                     }`}>
-                      <Power className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 transition-all duration-500 ${
+                      <Power className={`w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 transition-all duration-500 ${
                         isPowerOn 
-                          ? 'text-blue-600' 
-                          : 'text-gray-500'
+                          ? 'text-blue-500' 
+                          : 'text-gray-400'
                       }`} />
                     </div>
                   </motion.div>
@@ -152,21 +152,55 @@ export default function Hero() {
                         exit={{ opacity: 0, scale: 0.8 }}
                         className="absolute inset-0 -z-10"
                       >
-                        <div className="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-20 animate-pulse" />
+                        <div className="absolute inset-0 bg-blue-500 rounded-full blur-lg opacity-10" />
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
-                
-                {/* Status indicator dot */}
-                <div className="absolute -top-1 -right-1">
-                  <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-700 ${
-                    isPowerOn 
-                      ? 'bg-green-500 shadow-sm shadow-green-500/50 animate-pulse' 
-                      : 'bg-red-500 shadow-sm'
-                  }`} />
-                </div>
               </button>
+
+              {/* Subtle Pointing Finger */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="relative"
+              >
+                <motion.div
+                  animate={
+                    isPowerOn
+                      ? {
+                          // Subtle celebration when ON
+                          rotate: [0, 5, -5, 0],
+                          scale: [1, 1.05, 1],
+                        }
+                      : {
+                          // Gentle pulse when OFF
+                          scale: [1, 1.1, 1],
+                        }
+                  }
+                  transition={
+                    isPowerOn
+                      ? {
+                          duration: 0.5,
+                          times: [0, 0.33, 0.66, 1],
+                        }
+                      : {
+                          duration: 2,
+                          repeat: Infinity,
+                          repeatDelay: 3,
+                          ease: "easeInOut",
+                        }
+                  }
+                  className={`text-xl sm:text-2xl lg:text-3xl transition-all duration-700 ${
+                    isPowerOn
+                      ? 'opacity-70'
+                      : 'opacity-50'
+                  }`}
+                >
+                  👈
+                </motion.div>
+              </motion.div>
             </motion.div>
 
             {/* Main Headline */}
@@ -202,13 +236,13 @@ export default function Hero() {
                   ? 'text-white/95' 
                   : 'text-gray-600'
               }`}>
-                Crafting exceptional <span className={`font-semibold transition-colors duration-700 ${
+                Empowering spaces with the <span className={`font-semibold transition-colors duration-700 ${
                   isPowerOn ? 'text-white' : 'text-gray-500'
-                }`}>LED solutions</span> with precision engineering and thoughtful design.
+                }`}>Luminence</span> of Ray
                 <br className="hidden lg:block" />
                 <span className={`transition-colors duration-700 ${
                   isPowerOn ? 'text-white/80' : 'text-gray-700'
-                }`}>Quality that speaks for itself.</span>
+                }`}>"We are not saying we light up the room! But our LED's definately do."</span>
               </p>
             </motion.div>
 

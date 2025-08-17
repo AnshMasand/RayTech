@@ -293,6 +293,15 @@
   .animate-slide-up-fade {
     animation: slideUpFade 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
+  
+  /* Animation delays for gallery indicator */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
 }
 
 /* Custom scrollbar - Theme aware */

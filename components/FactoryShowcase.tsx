@@ -58,6 +58,72 @@ const factoryPhotos = [
     image: '/images/factory/r&d.jpeg',
     title: 'R&D Lab',
     description: 'Innovation center for next-generation LED development.'
+  },
+  {
+    id: 6,
+    image: '/images/factory/ageing-rack-1.jpeg',
+    title: 'Ageing Rack',
+    description: 'Comprehensive burn-in testing for long-term reliability assurance.'
+  },
+  {
+    id: 7,
+    image: '/images/factory/bigmachine.jpeg',
+    title: 'High-Capacity Production',
+    description: 'Industrial-scale manufacturing equipment for mass production.'
+  },
+  {
+    id: 8,
+    image: '/images/factory/bigmachineother.jpeg',
+    title: 'Advanced Manufacturing',
+    description: 'State-of-the-art machinery for precision component assembly.'
+  },
+  {
+    id: 9,
+    image: '/images/factory/laser-1.jpeg',
+    title: 'Laser Processing',
+    description: 'High-precision laser cutting and marking technology.'
+  },
+  {
+    id: 10,
+    image: '/images/factory/ledprinter-1.jpeg',
+    title: 'LED Printer',
+    description: 'Specialized printing equipment for circuit board production.'
+  },
+  {
+    id: 11,
+    image: '/images/factory/longmachine-1.jpeg',
+    title: 'Assembly Line',
+    description: 'Extended production line for continuous manufacturing flow.'
+  },
+  {
+    id: 12,
+    image: '/images/factory/photometrytesting.jpeg',
+    title: 'Photometry Testing',
+    description: 'Advanced light measurement and calibration laboratory.'
+  },
+  {
+    id: 13,
+    image: '/images/factory/reception entry.jpeg',
+    title: 'Facility Entrance',
+    description: 'Modern reception area welcoming visitors to our facility.'
+  },
+  {
+    id: 14,
+    image: '/images/factory/storage.jpeg',
+    title: 'Warehouse Storage',
+    description: 'Organized inventory management and product storage systems.'
+  },
+  {
+    id: 15,
+    image: '/images/factory/storage2.jpeg',
+    title: 'Component Storage',
+    description: 'Climate-controlled storage for sensitive electronic components.'
+  },
+  {
+    id: 16,
+    image: '/images/factory/syskaled-storage.jpeg',
+    title: 'Systematic Storage',
+    description: 'Efficient warehouse management with systematic organization.'
   }
 ]
 
@@ -548,18 +614,34 @@ export default function FactoryShowcase() {
                   <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:scale-110 transition-transform" />
                 </button>
 
-                {/* Auto-play Toggle */}
-                <button
-                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  className="absolute top-4 right-4 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
-                  aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
-                >
-                  {isAutoPlaying ? (
-                    <Pause className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  ) : (
-                    <Play className="w-4 h-4 sm:w-5 sm:h-5 text-white ml-0.5" />
+                {/* Auto-play Toggle with Indicator */}
+                <div className="absolute top-4 right-4 flex items-center gap-2">
+                  {isAutoPlaying && (
+                    <div className="bg-black/60 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-2">
+                      <div className="flex gap-1">
+                        <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+                        <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse animation-delay-200"></div>
+                        <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse animation-delay-400"></div>
+                      </div>
+                      <span className="text-white text-xs font-medium">AUTO</span>
+                    </div>
                   )}
-                </button>
+                  <button
+                    onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                    className={`w-8 h-8 sm:w-10 sm:h-10 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 ${
+                      isAutoPlaying 
+                        ? 'bg-gradient-accent shadow-lg shadow-theme-accent/50 hover:shadow-xl' 
+                        : 'bg-white/20 hover:bg-white/30'
+                    }`}
+                    aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
+                  >
+                    {isAutoPlaying ? (
+                      <Pause className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                    ) : (
+                      <Play className="w-4 h-4 sm:w-5 sm:h-5 text-white ml-0.5" />
+                    )}
+                  </button>
+                </div>
               </div>
 
               {/* Content Overlay */}
@@ -589,7 +671,7 @@ export default function FactoryShowcase() {
               ))}
             </div>
 
-            {/* Progress Bar */}
+            {/* Progress Bar with Enhanced Counter */}
             <div className="mt-3 sm:mt-4 max-w-xs mx-auto">
               <div className="w-full bg-white/20 rounded-full h-1">
                 <motion.div
@@ -599,8 +681,15 @@ export default function FactoryShowcase() {
                   transition={{ duration: 0.3 }}
                 />
               </div>
-              <div className="text-center mt-2 text-xs text-white/70">
-                {currentSlide + 1} of {factoryPhotos.length}
+              <div className="text-center mt-2 flex items-center justify-center gap-2">
+                <span className="text-xs text-white/70">
+                  {currentSlide + 1} of {factoryPhotos.length}
+                </span>
+                {factoryPhotos.length > 10 && (
+                  <span className="px-2 py-0.5 bg-gradient-accent rounded-full text-[10px] font-semibold text-white">
+                    FULL GALLERY
+                  </span>
+                )}
               </div>
             </div>
           </div>

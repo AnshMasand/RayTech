@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
 
 const navItems = [
-  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Team', href: '/team' },
   {
     name: 'Products',
     href: '/#products',
@@ -18,8 +19,8 @@ const navItems = [
     ],
   },
   { name: 'Factory', href: '/#factory' },
-  { name: 'Team', href: '/team' },
-  { name: 'About', href: '/about' },
+  { name: 'Media', href: '/media' },
+  { name: 'Careers', href: '/careers' },
   { name: 'Vision', href: '/vision' },
   { name: 'Contact', href: 'mailto:raytech@gmail.com' },
 ]
@@ -133,7 +134,7 @@ export default function Navbar() {
             {/* Premium CTA Button */}
             <div className="flex items-center ml-4 lg:ml-6 pl-4 lg:pl-6 border-l border-theme-border/30">
               <a 
-                href="https://wa.me/+919876543210?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
+                href="https://wa.me/+919892048600?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="theme-button-primary px-6 lg:px-8 py-2.5 lg:py-3 text-xs lg:text-sm font-semibold tracking-wide"
@@ -217,7 +218,7 @@ export default function Navbar() {
                 {/* Mobile CTA */}
                 <div className="p-4 border-t border-theme-border bg-theme-background/50">
                   <a 
-                    href="https://wa.me/+919876543210?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
+                    href="https://wa.me/+919892048600?text=Hi%2C%20I%20would%20like%20to%20get%20a%20quote%20for%20Raytech%20LED%20products."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="theme-button-primary w-full px-6 py-3.5 text-base font-semibold block text-center rounded-xl"

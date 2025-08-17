@@ -4,7 +4,7 @@ import { MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function WhatsAppCTA() {
-  const whatsappNumber = '+919876543210' // Replace with actual number
+  const whatsappNumber = '+919892048600' // Replace with actual number
   const message = 'Hi, I would like to get a quote for Raytech LED products.'
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
